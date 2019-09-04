@@ -1,4 +1,4 @@
-.PHONY: build install
+.PHONY: build install dep
 build:
 	go test -count 1 -v ./...
 	(cd generator && packr clean && packr)
