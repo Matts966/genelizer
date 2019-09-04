@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"go/token"
 	"log"
-	// "path/filepath"
 
 	"github.com/Matts966/analysisutil"
 	"github.com/Matts966/genelizer/generator/hclreader"
@@ -13,16 +12,16 @@ import (
 	"golang.org/x/tools/go/analysis/passes/buildssa"
 )
 
+const confDir = "../config"
+
 // Generate generates a slice of pointers to analysis.Analyzer by rules defined in config.
 func Generate() []*analysis.Analyzer {
-	box := packr.New("Config", "../config")
+	box := packr.New("Config", confDir)
 
 	var analyzers []*analysis.Analyzer
 
-	log.Println(box.List())
-
-	for range box.List() {
-		b, err := box.Find("sample.hcl")
+	for _, conf :=  range box.List() {
+		b, err := box.Find(conf)
 		if err != nil {
 			log.Fatal(err)
 		}

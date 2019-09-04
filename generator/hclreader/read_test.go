@@ -10,8 +10,10 @@ import (
 	"golang.org/x/xerrors"
 )
 
+const confDir = "../../config"
+
 func TestRead(t *testing.T) {
-	confDir := filepath.Join(hclreader.Parent, hclreader.Parent, hclreader.ConfigDir)
+	confDir := confDir
 
 	err := filepath.Walk(confDir, func(path string, info os.FileInfo, err error) error {
 		if err != nil {

@@ -7,12 +7,6 @@ import (
 	"golang.org/x/xerrors"
 )
 
-// ConfigDir is a path to directory that contains config files.
-const (
-	Parent    = ".."
-	ConfigDir = "config"
-)
-
 // Read inputs the path of file and read it as hcl.
 func Read(b []byte) (*Config, error) {
 	parser := hclparse.NewParser()

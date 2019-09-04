@@ -7,4 +7,4 @@ build:
 install: build
 	mv $(YOUR_BINARY_NAME) $(GOPATH)/bin/
 dep:
-	go get -u github.com/gobuffalo/packr/v2/packr2
+	go get -u github.com/gobuffalo/packr/v2/packr2@v2.6.0
