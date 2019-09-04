@@ -1,17 +1,17 @@
-rule {
-    name    = "reflect"
+rule "reflect" {
     package = "reflect"
     message = "hey!"
+    doc     = "reflect checker"
 }
 
-rule {
-    name    = "log"
+rule "log" {
     package = "log"
     message = "hey!"
+    doc     = "log checker"
 }
 
-rule {
-    name    = "fmt"
+rule "fmt" {
     package = "fmt"
     message = "hey!"
+    doc     = "fmt checker"
 }

@@ -1,6 +1,7 @@
 package generator
 
 import (
+	"fmt"
 	"go/token"
 	"log"
 	"path/filepath"
@@ -19,33 +20,28 @@ func Generate() []*analysis.Analyzer {
 	var analyzers []*analysis.Analyzer
 
 	for _, conf := range box.List() {
-		s, err := box.FindString(conf)
+		b, err := box.Find(conf)
 		if err != nil {
 			log.Fatal(err)
 		}
-		config, err := hclreader.Read(s)
+		config, err := hclreader.Read(b)
 		if err != nil {
 			log.Fatal(err)
 		}
-		// if config == nil {
-		// 	log.Fatal(fmt.Errorf("empty config"))
-		// }
-		for _, rule := range config {
+		if config == nil {
+			log.Fatal(fmt.Errorf("empty config"))
+		}
+
+		for _, rule := range config.Rules {
 			var analyzer = &analysis.Analyzer{
-				Name: rule.Name,
+				Name:             rule.Name,
 				RunDespiteErrors: true,
+				Doc:              rule.Doc,
 				Requires: []*analysis.Analyzer{
 					buildssa.Analyzer,
 				},
 			}
-			if rule.Doc != nil {
-				analyzer.Doc = *rule.Doc
-			}
-
-			if rule.Package != nil {
-				analyzer.Run = generateRun(*rule.Package)
-			}
-
+			analyzer.Run = generateRun(rule.Package)
 			analyzers = append(analyzers, analyzer)
 		}
 	}
@@ -54,9 +50,6 @@ func Generate() []*analysis.Analyzer {
 }
 
 func generateRun(packageName string) func(pass *analysis.Pass) (interface{}, error) {
-
-	log.Println(packageName)
-
 	return func(pass *analysis.Pass) (interface{}, error) {
 		if analysisutil.PkgUsedInPass(packageName, pass) {
 			pass.Reportf(token.NoPos, packageName+" package is used in pass.")
