@@ -21,6 +21,8 @@ Or install it in your path by
 $ YOUR_BINARY_NAME=binary-name make install
 ```
 
+Also Dockerfile is located for test use.
+
 ## Analyzer and Goroutine
 
 The `golang.org/x/tools/go/analysis` package runs `analysis.Analyzer` concurrently per packages using goroutine and waitgroup.
