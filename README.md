@@ -9,10 +9,8 @@ $ git clone https://github.com/Matts966/genelizer.git && cd genelizer
 Now you can edit `./config/sample.hcl` or add other files in `./config` directory to change analysis.
 
 ```
-$ YOUR_BINARY_NAME=binary
 $ go get -u github.com/gobuffalo/packr/v2/packr2
-$ (cd generator && packr2 clean && packr2)
-$ go build -o $YOUR_BINARY_NAME ./cmd/genelize
+$ YOUR_BINARY_NAME=binary-name make
 ```
 
 Then you can get your portable binary!
@@ -20,13 +18,13 @@ Then you can get your portable binary!
 You can also get the binary like this if `packr2` is installed.
 
 ```
-$ YOUR_BINARY_NAME=binary make
+$ YOUR_BINARY_NAME=binary-name make
 ```
 
 Or install it in your path by
 
 ```
-$ YOUR_BINARY_NAME=binary make
+$ YOUR_BINARY_NAME=binary-name make
 ```
 
 ## Analyzer and Goroutine
