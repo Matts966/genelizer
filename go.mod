@@ -5,7 +5,6 @@ go 1.12
 require (
 	github.com/Matts966/analysisutil v0.0.5
 	github.com/gobuffalo/packr v0.0.0-20190826012711-b6d537d85311
-	github.com/gobuffalo/packr/v2 v2.6.0 // indirect
 	github.com/hashicorp/hcl2 v0.0.0-20190821123243-0c888d1241f6
 	github.com/rogpeppe/go-internal v1.3.1 // indirect
 	github.com/stretchr/testify v1.4.0 // indirect

@@ -1,4 +1,5 @@
 .PHONY: build install dep
+YOUR_BINARY_NAME ?= generated
 build:
 	go test -count 1 -v ./...
 	(cd generator && packr clean && packr)
