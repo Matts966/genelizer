@@ -6,11 +6,11 @@
 $ git clone https://github.com/Matts966/genelizer.git && cd genelizer
 ```
 
-Now you can edit `./config/sample.hcl` or add other files in `./config` directory to change analysis.
+Now you can edit `./config/sample.hcl` or add other files in `./config` directory to change analysis and
 
 ```
-$ go get -u github.com/gobuffalo/packr/v2/packr2
-$ YOUR_BINARY_NAME=binary-name make build
+$ make dep
+$ YOUR_BINARY_NAME=binary-name make
 ```
 
 Then you can get your portable binary!
