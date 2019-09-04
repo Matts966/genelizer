@@ -10,16 +10,10 @@ Now you can edit `./config/sample.hcl` or add other files in `./config` director
 
 ```
 $ go get -u github.com/gobuffalo/packr/v2/packr2
-$ YOUR_BINARY_NAME=binary-name make
+$ YOUR_BINARY_NAME=binary-name make build
 ```
 
 Then you can get your portable binary!
-
-You can also get the binary like this if `packr2` is installed.
-
-```
-$ YOUR_BINARY_NAME=binary-name make build
-```
 
 Or install it in your path by
 
