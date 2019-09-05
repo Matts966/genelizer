@@ -1,4 +1,4 @@
-# genelizer [![CircleCI](https://circleci.com/gh/Matts966/genelizer.svg?style=svg)](https://circleci.com/gh/Matts966/genelizer)
+# genelizer [![CircleCI](https://circleci.com/gh/Matts966/genelizer.svg?style=svg)](https://circleci.com/gh/Matts966/genelizer) [![codecov](https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg)](https://codecov.io/gh/Matts966/genelizer)
 
 ## Quick Start
 
