@@ -9,11 +9,10 @@ $ git clone https://github.com/Matts966/genelizer.git && cd genelizer
 Now you can edit `./config/sample.hcl` or add other files in `./config` directory to change analysis and
 
 ```
-$ make dep
 $ YOUR_BINARY_NAME=binary-name make
 ```
 
-Then you can get your portable binary!
+Then you can get your portable binary named `binary-name`!
 
 Or install it in your path by
 
@@ -22,6 +21,10 @@ $ YOUR_BINARY_NAME=binary-name make install
 ```
 
 Also Dockerfile is located for test use.
+
+```
+$ make docker
+```
 
 ## Analyzer and Goroutine
 
