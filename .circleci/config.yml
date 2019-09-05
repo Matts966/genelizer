@@ -37,7 +37,7 @@ jobs:
           go test -v -race -covermode=atomic -coverpkg=./... -coverprofile=coverage.out ./...
       - codecov/upload:
         file: ./coverage.out
-      - build:
+      - run:
         commnad: make run
 orbs:
   codecov: codecov/codecov@1.0.5
