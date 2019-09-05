@@ -1,4 +1,4 @@
-# genelizer
+# genelizer [![CircleCI](https://circleci.com/gh/Matts966/refsafe.svg?style=svg)](https://circleci.com/gh/Matts966/refsafe)
 
 ## Quick Start
 
