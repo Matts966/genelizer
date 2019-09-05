@@ -27,7 +27,7 @@ jobs:
       - codecov/upload:
         file: ./coverage.out
       - run:
-          command: make deps && make build
+          command: make dep && make build
 orbs:
   codecov: codecov/codecov@1.0.5
 commands:
