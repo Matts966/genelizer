@@ -20,7 +20,7 @@ func Generate() []*analysis.Analyzer {
 
 	var analyzers []*analysis.Analyzer
 
-	for _, conf :=  range box.List() {
+	for _, conf := range box.List() {
 		b, err := box.Find(conf)
 		if err != nil {
 			log.Fatal(err)
@@ -42,7 +42,7 @@ func Generate() []*analysis.Analyzer {
 					buildssa.Analyzer,
 				},
 			}
-			analyzer.Run = generateRun(rule.Package)
+			analyzer.Run = generateRun(rule)
 			analyzers = append(analyzers, analyzer)
 		}
 	}
@@ -50,10 +50,14 @@ func Generate() []*analysis.Analyzer {
 	return analyzers
 }
 
-func generateRun(packageName string) func(pass *analysis.Pass) (interface{}, error) {
+func generateRun(rule hclreader.Rule) func(pass *analysis.Pass) (interface{}, error) {
 	return func(pass *analysis.Pass) (interface{}, error) {
-		if analysisutil.PkgUsedInPass(packageName, pass) {
-			pass.Reportf(token.NoPos, packageName+" package is used in pass.")
+		if analysisutil.PkgUsedInPass(rule.Package, pass) {
+			if rule.Message != nil {
+				pass.Reportf(token.NoPos, *rule.Message)
+			} else {
+				pass.Reportf(token.NoPos, rule.Package+" package is used in pass.")
+			}
 		}
 		return nil, nil
 	}
