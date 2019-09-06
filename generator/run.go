@@ -51,10 +51,19 @@ func reportType(pass *analysis.Pass, rule hclreader.Rule) {
 
 func reportFunc(pass *analysis.Pass, rule hclreader.Rule) {
 	for _, rf := range rule.Funcs {
-		rfo := analysisutil.ObjectOf(pass, rule.Package, rf.Name)
-		rff, ok := rfo.(*types.Func)
-		if !ok {
-			continue
+		var recvT types.Type
+		var rff *types.Func
+		if rf.Receiver != nil {
+			recvT = analysisutil.TypeOf(pass, rule.Package, *rf.Receiver)
+			rff = analysisutil.MethodOf(recvT, rf.Name)
+		} else {
+			// TODO(Matts966): More precisely get object.
+			rfo := analysisutil.ObjectOf(pass, rule.Package, rf.Name)
+			var ok bool
+			rff, ok = rfo.(*types.Func)
+			if !ok {
+				continue
+			}
 		}
 		for _, f := range pass.ResultOf[buildssa.Analyzer].(*buildssa.SSA).SrcFuncs {
 			if !analysisutil.PkgUsedInFunc(pass, rule.Package, f) {
@@ -62,17 +71,27 @@ func reportFunc(pass *analysis.Pass, rule hclreader.Rule) {
 			}
 			for _, b := range f.Blocks {
 				for i, instr := range b.Instrs {
-					if !analysisutil.Called(instr, nil, rff) {
+					recv := analysisutil.ReturnReceiverIfCalled(instr, rff)
+					if recvT != nil && recv == nil {
 						continue
 					}
+
 					pos := b.Instrs[i].Pos()
 
 					for _, rfb := range rf.Befores {
-						rfbf, ok := analysisutil.ObjectOf(pass, rule.Package, rfb.Name).(*types.Func)
-						if !ok {
-							continue
+						var rfbf *types.Func
+						if recvT != nil {
+							rfbf = analysisutil.MethodOf(recvT, rfb.Name)
+						} else {
+							// TODO(Matts966): More precisely get object.
+							rfo := analysisutil.ObjectOf(pass, rule.Package, rfb.Name)
+							var ok bool
+							rfbf, ok = rfo.(*types.Func)
+							if !ok {
+								continue
+							}
 						}
-						ok, called := analysisutil.CalledFromBefore(b, i, nil, rfbf)
+						ok, called := analysisutil.CalledFromBefore(b, i, recv, rfbf)
 						if !(ok && called) {
 							if rule.Message != nil {
 								pass.Reportf(pos, *rule.Message)
@@ -87,7 +106,7 @@ func reportFunc(pass *analysis.Pass, rule hclreader.Rule) {
 						if !ok {
 							continue
 						}
-						ok, called := analysisutil.CalledFromAfter(b, i, nil, rfaf)
+						ok, called := analysisutil.CalledFromAfter(b, i, recv, rfaf)
 						if !(ok && called) {
 							if rule.Message != nil {
 								pass.Reportf(pos, *rule.Message)

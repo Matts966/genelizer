@@ -1,8 +1,8 @@
 .PHONY: build install dep docker
 YOUR_BINARY_NAME ?= generated
 build:
-	go test -count 1 ./...
 	(cd generator && packr2 clean && packr2 build && echo "package packrd_test" > packrd/packrd_test.go)
+	go test -count 1 ./...
 	go mod tidy
 	go build -o $(YOUR_BINARY_NAME) --ldflags '-extldflags "-static"' ./cmd/genelize
 	@echo "=== built binary named '${YOUR_BINARY_NAME}'!"

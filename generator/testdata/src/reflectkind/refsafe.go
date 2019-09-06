@@ -11,7 +11,7 @@ func test6(i *interface{}) {
 	rv := reflect.ValueOf(i)
 	var rv2 unsafe.Pointer
 	if rv.CanSet() {
-		rv.SetPointer(rv2) // want `Kind should be UnsafePointer when calling SetPointer`
+		rv.SetPointer(rv2) // want `Kind should be UnsafePointer when calling SetPointer` `should call Kind before calling SetPointer`
 	}
 }
 

@@ -6,7 +6,7 @@ import (
 
 func test1(i *interface{}) {
 	rv := reflect.ValueOf(i)
-	rv.Addr() // want `CanAddr should be called before calling Addr`
+	rv.Addr() // want `should call CanAddr before calling Addr`
 }
 
 func test2(i *interface{}) {
@@ -26,11 +26,11 @@ func test3(i *interface{}) {
 
 func test4(i *interface{}) {
 	rv := reflect.ValueOf(i)
-	rv.Interface() // want `CanInterface should be called before calling Interface`
+	rv.Interface() // want `should call CanInterface before calling Interface`
 }
 
 func test5(i *interface{}) {
 	rv := reflect.ValueOf(i)
 	var rv2 reflect.Value
-	rv.Set(rv2) // want `CanSet should be called before calling Set`
+	rv.Set(rv2) // want `should call CanSet before calling Set`
 }
