@@ -1,7 +1,7 @@
 .PHONY: build install dep docker
 YOUR_BINARY_NAME ?= generated
-build: dep
-	go test -count 1 -v ./...
+build:
+	go test -count 1 ./...
 	(cd generator && packr2 clean && packr2 build)
 	go mod tidy
 	go build -o $(YOUR_BINARY_NAME) --ldflags '-extldflags "-static"' ./cmd/genelize
