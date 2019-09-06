@@ -1,6 +1,8 @@
 package a
 
-import "os"
+import (
+	"os"
+)
 
 func test10() {
 	f, _ := os.Open("") // OK

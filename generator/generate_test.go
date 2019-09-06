@@ -10,6 +10,6 @@ import (
 func Test(t *testing.T) {
 	testdata := analysistest.TestData()
 	for _, a := range generator.Generate() {
-		analysistest.Run(t, testdata, a, "a")
+		analysistest.Run(t, testdata, a, a.Name)
 	}
 }

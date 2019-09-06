@@ -22,20 +22,20 @@ type Type struct {
 }
 
 // Func is a block to check the function including method is properly used.
-// TODO(Matts966): Add a flag to check receiver.
 type Func struct {
-	Name    string   `hcl:"name,label"`
-	Befores []Before `hcl:"before,block"`
-	Afters  []After  `hcl:"after,block"`
+	Name     string   `hcl:"name,label"`
+	Receiver *string  `hcl:"receiver,optional"`
+	Befores  []Before `hcl:"before,block"`
+	Afters   []After  `hcl:"after,block"`
 }
 
-// Before is a
+// Before is a block to check the specified function is called before the function of parent block is called.
 type Before struct {
 	Name   string   `hcl:"func,label"`
 	Return []string `hcl:"return,optional"`
 }
 
-// After is a
+// After is a block to check the specified function is called after the function of parent block is called.
 type After struct {
 	Name string `hcl:"func,label"`
 }

@@ -2,6 +2,7 @@ package generator
 
 import (
 	"go/types"
+	"strings"
 
 	"github.com/Matts966/analysisutil"
 	"github.com/Matts966/genelizer/generator/hclreader"
@@ -30,15 +31,16 @@ func reportType(pass *analysis.Pass, rule hclreader.Rule) {
 			for _, b := range f.Blocks {
 				for i := range b.Instrs {
 					pos := b.Instrs[i].Pos()
+					var rtsfs []*types.Func
 					for _, rts := range rt.Shoulds {
-						rtsf := analysisutil.MethodOf(t, rts)
-						called, ok := analysisutil.CalledFrom(b, i, t, rtsf)
-						if ok && !called {
-							if rule.Message != nil {
-								pass.Reportf(pos, *rule.Message)
-							} else {
-								pass.Reportf(pos, "should call "+rtsf.Name()+" when using "+t.String())
-							}
+						rtsfs = append(rtsfs, analysisutil.MethodOf(t, rts))
+					}
+					called, ok := analysisutil.CalledFrom(b, i, t, rtsfs...)
+					if ok && !called {
+						if rule.Message != nil {
+							pass.Reportf(pos, *rule.Message)
+						} else {
+							pass.Reportf(pos, "should call "+strings.Join(rt.Shoulds, " or ")+" when using "+t.String())
 						}
 					}
 				}
