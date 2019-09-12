@@ -1,7 +1,7 @@
 rule "file" {
     package = "os"
     doc = "check if file is closed"
-    type "File" {
+    type "*File" {
         should = [ "Close" ]
     }
 }
