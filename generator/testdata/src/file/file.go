@@ -10,5 +10,5 @@ func test10() {
 }
 
 func test11() {
-	_, _ = os.Open("") // want `should call os.Close when using os.File`
+	_, _ = os.Open("") // want `should call Close when using \*os.File`
 }

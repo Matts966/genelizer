@@ -32,7 +32,7 @@ type Func struct {
 // Before is a block to check the specified function is called before the function of parent block is called.
 type Before struct {
 	Name   string   `hcl:"func,label"`
-	Return []string `hcl:"return,optional"`
+	Returns []string `hcl:"return,optional"`
 }
 
 // After is a block to check the specified function is called after the function of parent block is called.

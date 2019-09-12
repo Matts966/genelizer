@@ -91,12 +91,20 @@ func reportFunc(pass *analysis.Pass, rule hclreader.Rule) {
 								continue
 							}
 						}
+
 						ok, called := analysisutil.CalledFromBefore(b, i, recv, rfbf)
 						if !(ok && called) {
 							if rule.Message != nil {
 								pass.Reportf(pos, *rule.Message)
 							} else {
 								pass.Reportf(pos, "should call "+rfbf.Name()+" before calling "+rf.Name)
+							}
+						}
+
+						for _, rfbr := range rfb.Returns {
+							o := analysisutil.ObjectOf(pass, rule.Package, rfbr)
+							if !analysisutil.CalledBeforeAndEqualTo(b, recv, rfbf, o) {
+								pass.Reportf(pos, rfbf.Name()+" should be "+o.Name()+" when calling "+rf.Name)
 							}
 						}
 					}
