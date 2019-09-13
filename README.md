@@ -39,10 +39,10 @@ See the code doing it [here](https://github.com/golang/tools/blob/be0da057c5e3c2
 
 For utilizing this feature of `golang.org/x/tools/go/analysis` , `genelizer` generates `analysis.Analyzer` for each rule in the config.
 
-[circleci-badge]: https://circleci.com/gh/Matts966/genelizer.svg?style=svg
-[circleci]: https://circleci.com/gh/Matts966/genelizer
-[codecov]: https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg
-[codecov-badge]: https://codecov.io/gh/Matts966/genelizer
+[circleci-badge]: https://circleci.com/gh/Matts966/genelizer
+[circleci]: https://circleci.com/gh/Matts966/genelizer.svg?style=svg
+[codecov]: https://codecov.io/gh/Matts966/genelizer
+[codecov-badge]: https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg
 [godoc]: https://godoc.org/github.com/Matts966/genelizer
 [godoc-badge]: https://img.shields.io/badge/godoc-reference-4F73B3.svg?style=flat-square&label=%20godoc.org
 [golangci]: https://golangci.com/r/github.com/Matts966/genelizer
