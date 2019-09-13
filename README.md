@@ -1,4 +1,5 @@
 # genelizer 
+[![GitHub Actions][github-actions-badge]][github-actions]
 [![CircleCI][circleci-badge]][circleci]
 [![codecov][codecov-badge]][codecov]
 [![godoc.org][godoc-badge]][godoc]
@@ -39,6 +40,8 @@ See the code doing it [here](https://github.com/golang/tools/blob/be0da057c5e3c2
 
 For utilizing this feature of `golang.org/x/tools/go/analysis` , `genelizer` generates `analysis.Analyzer` for each rule in the config.
 
+[github-actions]: https://github.com/Matts966/genelizer/actions
+[github-actions-badge]: https://github.com/Matts966/genelizer/workflows/Go/badge.svg
 [circleci]: https://circleci.com/gh/Matts966/genelizer
 [circleci-badge]: https://circleci.com/gh/Matts966/genelizer.svg?style=svg
 [codecov]: https://codecov.io/gh/Matts966/genelizer
