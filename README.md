@@ -1,4 +1,10 @@
-# genelizer [![CircleCI](https://circleci.com/gh/Matts966/genelizer.svg?style=svg)](https://circleci.com/gh/Matts966/genelizer) [![codecov](https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg)](https://codecov.io/gh/Matts966/genelizer)
+# genelizer 
+[![CircleCI][circleci-badge]][circleci]
+[![codecov][codecov-badge]][codecov]
+[![godoc.org][godoc-badge]][godoc]
+[![GolangCI][golangci-badge]][golangci]
+[![LICENSE][license-badge]][license]
+[![Go Report Card][go-report-card-badge]][go-report-card]
 
 ## Quick Start
 
@@ -32,3 +38,16 @@ The `golang.org/x/tools/go/analysis` package runs `analysis.Analyzer` concurrent
 See the code doing it [here](https://github.com/golang/tools/blob/be0da057c5e3c2df569a2c25cd280149b7d7e7d0/go/analysis/internal/checker/checker.go#L201).
 
 For utilizing this feature of `golang.org/x/tools/go/analysis` , `genelizer` generates `analysis.Analyzer` for each rule in the config.
+
+[circleci-badge]: https://circleci.com/gh/Matts966/genelizer.svg?style=svg
+[circleci]: https://circleci.com/gh/Matts966/genelizer
+[codecov]: https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg
+[codecov-badge]: https://codecov.io/gh/Matts966/genelizer
+[godoc]: https://godoc.org/github.com/Matts966/genelizer
+[godoc-badge]: https://img.shields.io/badge/godoc-reference-4F73B3.svg?style=flat-square&label=%20godoc.org
+[golangci]: https://golangci.com/r/github.com/Matts966/genelizer
+[golangci-badge]: https://golangci.com/badges/github.com/Matts966/genelizer.svg
+[license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[license]: https://opensource.org/licenses/MIT
+[go-report-card]: https://goreportcard.com/report/github.com/Matts966/genelizer
+[go-report-card-badge]: https://goreportcard.com/badge/github.com/Matts966/genelizer
