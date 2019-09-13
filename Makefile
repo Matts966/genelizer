@@ -5,7 +5,6 @@ build:
 	go test -count 1 ./...
 	go mod tidy
 	go build -o $(YOUR_BINARY_NAME) --ldflags '-extldflags "-static"' ./cmd/genelize
-	(cd generator && packr2 clean)
 	@echo "=== built binary named '${YOUR_BINARY_NAME}'!"
 install: build
 	mv $(YOUR_BINARY_NAME) $(GOPATH)/bin/
