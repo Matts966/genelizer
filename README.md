@@ -8,6 +8,8 @@
 [![LICENSE][license-badge]][license]
 [![Go Report Card][go-report-card-badge]][go-report-card]
 
+This repository was a part of achievement in Internship in [Merpay](https://merpay.com) Expert Team.
+
 ## Quick Start
 
 ```
@@ -33,6 +35,10 @@ Also Dockerfile is located for test use.
 ```
 $ make docker
 ```
+
+## Samples
+
+You can read some some sample config [files](https://github.com/Matts966/genelizer/tree/master/config), and corresponding [test files](https://github.com/Matts966/genelizer/tree/master/generator/testdata/src)
 
 ## Analyzer and Goroutine
 
