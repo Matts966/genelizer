@@ -1,4 +1,5 @@
-# genelizer 
+![genelizer](genelizer.png)
+
 [![GitHub Actions][github-actions-badge]][github-actions]
 [![CircleCI][circleci-badge]][circleci]
 [![codecov][codecov-badge]][codecov]
