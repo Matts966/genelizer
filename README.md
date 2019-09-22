@@ -40,6 +40,32 @@ $ make docker
 
 You can read some some sample config [files](https://github.com/Matts966/genelizer/tree/master/config), and corresponding [test files](https://github.com/Matts966/genelizer/tree/master/generator/testdata/src)
 
+For example, we can ensure closing files by the setting below.
+
+```hcl
+rule "file" {
+    package = "os"
+    doc = "check if file is closed"
+    type "*File" {
+        should = [ "Close" ]
+    }
+}
+```
+
+Also the generated linter can be tested by the test codes below.
+
+```go
+func test10() {
+	f, _ := os.Open("") // OK
+	f.Close()
+}
+
+func test11() {
+	_, _ = os.Open("") // want `should call Close when using \*os.File`
+}
+```
+
+
 ## Analyzer and Goroutine
 
 The `golang.org/x/tools/go/analysis` package runs `analysis.Analyzer` concurrently per packages using goroutine and waitgroup.
