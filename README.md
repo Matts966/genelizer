@@ -37,7 +37,7 @@ $ make docker
 
 ## Samples
 
-You can read some some sample config [files](https://github.com/Matts966/genelizer/tree/master/config), and corresponding [test files](https://github.com/Matts966/genelizer/tree/master/generator/testdata/src)
+You can read some sample config [files](https://github.com/Matts966/genelizer/tree/master/config), and corresponding [test files](https://github.com/Matts966/genelizer/tree/master/generator/testdata/src).
 
 For example, we can ensure closing files by the setting below.
 
