@@ -3,7 +3,6 @@
 [![GitHub Actions][github-actions-badge]][github-actions]
 [![CircleCI][circleci-badge]][circleci]
 [![codecov][codecov-badge]][codecov]
-[![godoc.org][godoc-badge]][godoc]
 [![GolangCI][golangci-badge]][golangci]
 [![LICENSE][license-badge]][license]
 [![Go Report Card][go-report-card-badge]][go-report-card]
@@ -79,8 +78,6 @@ For utilizing this feature of `golang.org/x/tools/go/analysis` , `genelizer` gen
 [circleci-badge]: https://circleci.com/gh/Matts966/genelizer.svg?style=svg
 [codecov]: https://codecov.io/gh/Matts966/genelizer
 [codecov-badge]: https://codecov.io/gh/Matts966/genelizer/branch/master/graph/badge.svg
-[godoc]: https://godoc.org/github.com/Matts966/genelizer
-[godoc-badge]: https://img.shields.io/badge/godoc-reference-4F73B3.svg?style=flat-square&label=%20godoc.org
 [golangci]: https://golangci.com/r/github.com/Matts966/genelizer
 [golangci-badge]: https://golangci.com/badges/github.com/Matts966/genelizer.svg
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
